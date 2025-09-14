@@ -6,7 +6,7 @@ import { ChevronRight, ChevronLeft, BookOpen, Brain, Target, CheckCircle, Clock,
 import { useRouter } from 'next/navigation';
 
 export default function OnboardingVocabularyProcessing() {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
   const router = useRouter();
@@ -118,11 +118,11 @@ export default function OnboardingVocabularyProcessing() {
                 <BookOpen className="w-10 h-10 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                Let's analyze your<br />
+                Let&apos;s analyze your<br />
                 <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-blue-300 bg-clip-text text-transparent">vocabulary</span>
               </h1>
               <p className="text-xl text-white/80 max-w-2xl mx-auto">
-                We'll process your vocabulary patterns to create a personalized learning experience tailored to your needs
+                We&apos;ll process your vocabulary patterns to create a personalized learning experience tailored to your needs
               </p>
             </motion.div>
 
@@ -134,7 +134,7 @@ export default function OnboardingVocabularyProcessing() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                What we'll analyze:
+                What we&apos;ll analyze:
               </motion.h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {processingSteps.map((step, index) => {
@@ -287,7 +287,7 @@ export default function OnboardingVocabularyProcessing() {
                     Your Vocabulary Profile
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {vocabularyInsights.map((insight, index) => (
+                    {vocabularyInsights.map((insight) => (
                       <div key={insight.category} className="text-center">
                         <div className="text-lg font-semibold text-white mb-1">
                           {insight.category}
