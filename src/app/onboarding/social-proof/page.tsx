@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, ChevronLeft, Star, Quote, Users, Globe, TrendingUp } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Star, Users, Globe, TrendingUp } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function OnboardingSocialProof() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -148,9 +149,11 @@ export default function OnboardingSocialProof() {
             {/* Testimonial Card */}
             <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
               <div className="flex items-start gap-6">
-                <img
+                <Image
                   src={testimonials[currentTestimonial].avatar}
                   alt={testimonials[currentTestimonial].name}
+                  width={64}
+                  height={64}
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div className="flex-1">
@@ -160,7 +163,7 @@ export default function OnboardingSocialProof() {
                     ))}
                   </div>
                   <blockquote className="text-white text-lg leading-relaxed mb-4">
-                    "{testimonials[currentTestimonial].text}"
+                    &ldquo;{testimonials[currentTestimonial].text}&rdquo;
                   </blockquote>
                   <div className="flex items-center justify-between">
                     <div>

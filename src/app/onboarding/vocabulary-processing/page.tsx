@@ -6,7 +6,6 @@ import { ChevronRight, ChevronLeft, BookOpen, Brain, Target, CheckCircle, Clock,
 import { useRouter } from 'next/navigation';
 
 export default function OnboardingVocabularyProcessing() {
-  const [currentStep] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
   const router = useRouter();

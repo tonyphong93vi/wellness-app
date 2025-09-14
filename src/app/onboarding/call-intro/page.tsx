@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, ChevronLeft, Phone, Mic, Headphones, Clock, CheckCircle, Star, Users, Globe } from 'lucide-react';
+import { ChevronLeft, Phone, Mic, Headphones, Clock, CheckCircle, Star, Users, Globe } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function OnboardingCallIntro() {
@@ -107,7 +106,7 @@ export default function OnboardingCallIntro() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            What you'll experience:
+            What you&apos;ll experience:
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {callFeatures.map((feature, index) => {

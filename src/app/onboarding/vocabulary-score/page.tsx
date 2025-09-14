@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, ChevronLeft, BookOpen, TrendingUp, Target, Star, CheckCircle } from 'lucide-react';
+import { ChevronRight, ChevronLeft, BookOpen, TrendingUp, Target } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function OnboardingVocabularyScore() {
@@ -126,7 +126,7 @@ export default function OnboardingVocabularyScore() {
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-blue-300 bg-clip-text text-transparent">score</span>
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Based on your responses, here's your current vocabulary assessment
+            Based on your responses, here&apos;s your current vocabulary assessment
           </p>
         </motion.div>
 

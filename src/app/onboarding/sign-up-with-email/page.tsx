@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, ChevronLeft, Mail, Lock, User, CheckCircle, Eye, EyeOff } from 'lucide-react';
+import { ChevronLeft, Mail, Lock, User, CheckCircle, Eye, EyeOff } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function OnboardingSignUpWithEmail() {

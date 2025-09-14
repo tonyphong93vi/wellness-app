@@ -115,7 +115,7 @@ export default function OnboardingSkills() {
             to <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-blue-300 bg-clip-text text-transparent">improve</span>?
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Select all the areas you'd like to focus on. You can always change this later.
+            Select all the areas you&apos;d like to focus on. You can always change this later.
           </p>
         </motion.div>
 

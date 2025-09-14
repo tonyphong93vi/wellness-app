@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, ChevronLeft, Target, Calendar, TrendingUp, CheckCircle, Star, Clock, BookOpen, Users } from 'lucide-react';
+import { ChevronLeft, Target, Calendar, TrendingUp, CheckCircle, Star, Clock, BookOpen, Users } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function OnboardingPersonalPlan() {
@@ -228,7 +228,7 @@ export default function OnboardingPersonalPlan() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            What you'll get with any plan:
+            What you&apos;ll get with any plan:
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {planBenefits.map((benefit, index) => {
@@ -267,7 +267,7 @@ export default function OnboardingPersonalPlan() {
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <div className="text-center">
                 <div className="text-2xl font-bold text-white mb-2">
-                  Perfect! You've chosen the {selectedPlanData.title}
+                  Perfect! You&apos;ve chosen the {selectedPlanData.title}
                 </div>
                 <p className="text-white/80">
                   Your personalized learning journey will begin with {selectedPlanData.sessions.toLowerCase()} sessions, 

@@ -159,7 +159,7 @@ export default function OnboardingAge() {
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <div className="text-center">
                 <div className="text-2xl font-bold text-white mb-2">
-                  Perfect! We'll customize content for {selectedAgeData.description.toLowerCase()}s
+                  Perfect! We&apos;ll customize content for {selectedAgeData.description.toLowerCase()}s
                 </div>
                 <p className="text-white/80">
                   Our AI will adapt the learning materials, examples, and topics to be most relevant for your age group.

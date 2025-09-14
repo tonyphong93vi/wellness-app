@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, ChevronLeft, Monitor, Smartphone, Users, Briefcase, BookOpen, Headphones, MessageSquare, Globe, CheckCircle } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Monitor, Smartphone, Users, Briefcase, BookOpen, Headphones, MessageSquare, Globe } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function OnboardingEnglishUsage() {

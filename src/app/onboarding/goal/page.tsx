@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, ChevronLeft, Target, Briefcase, GraduationCap, Globe, Users, TrendingUp, Calendar, CheckCircle } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Target, Briefcase, GraduationCap, Globe, Users, TrendingUp, CheckCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function OnboardingGoal() {
@@ -101,7 +101,7 @@ export default function OnboardingGoal() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-            What's your main<br />
+            What&apos;s your main<br />
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-blue-300 bg-clip-text text-transparent">goal</span> with English?
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
@@ -176,7 +176,7 @@ export default function OnboardingGoal() {
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <div className="text-center">
                 <div className="text-2xl font-bold text-white mb-2">
-                  Perfect! We'll help you with {selectedGoalData.title.toLowerCase()}
+                  Perfect! We&apos;ll help you with {selectedGoalData.title.toLowerCase()}
                 </div>
                 <p className="text-white/80">
                   Our AI will create a personalized learning plan focused on your specific goals and track your progress along the way.

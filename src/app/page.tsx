@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Users, Clock, DollarSign, CheckCircle, Star } from 'lucide-react';
+import { ChevronRight, Users, CheckCircle, Star } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -66,7 +66,7 @@ export default function Home() {
           whileTap={{ scale: 0.95 }}
           onClick={handleLetsImprove}
         >
-          Let's improve
+          Let&apos;s improve
           <ChevronRight className="w-5 h-5" />
         </motion.button>
       </section>
@@ -91,7 +91,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            ... but still can't speak fluently
+            ... but still can&apos;t speak fluently
           </motion.h3>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function Home() {
             While other apps teach the basics...
           </p>
           <p className="text-2xl font-semibold text-black">
-            we're here to take you to <span className="font-bold">Advanced level</span> and higher
+            we&apos;re here to take you to <span className="font-bold">Advanced level</span> and higher
           </p>
         </div>
 
@@ -146,7 +146,7 @@ export default function Home() {
                 English level
               </h3>
               <p className="text-gray-600">
-                We'll assess your real English level and track your progress over time
+                We&apos;ll assess your real English level and track your progress over time
               </p>
             </motion.div>
 
