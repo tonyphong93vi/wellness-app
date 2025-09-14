@@ -1,102 +1,330 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ChevronRight, Users, Clock, DollarSign, CheckCircle, Star } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [selectedImprovement, setSelectedImprovement] = useState<string | null>(null);
+  const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const improvements = [
+    { id: 'pronunciation', label: 'pronunciation' },
+    { id: 'grammar', label: 'grammar' },
+    { id: 'vocabulary', label: 'vocabulary' },
+    { id: 'fluency', label: 'fluency' }
+  ];
+
+  const handleLetsImprove = () => {
+    router.push('/onboarding/vocabulary-score');
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-black">
+      {/* Header */}
+      <header className="flex justify-between items-center px-6 py-4">
+        <div className="text-2xl font-bold text-white">Fluently</div>
+        <button className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors">
+          Log in
+        </button>
+      </header>
+
+      {/* Hero Section */}
+      <section className="px-6 py-16 text-center">
+        <motion.h1 
+          className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          What would you like<br />
+          to <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-blue-300 bg-clip-text text-transparent">improve</span> in your English?
+        </motion.h1>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {improvements.map((improvement) => (
+            <motion.button
+              key={improvement.id}
+              className={`px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 ${
+                selectedImprovement === improvement.id
+                  ? 'bg-black text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+              onClick={() => setSelectedImprovement(improvement.id)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {improvement.label}
+            </motion.button>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <motion.button 
+          className="px-8 py-4 bg-black text-white rounded-lg text-lg font-medium hover:bg-gray-800 transition-colors flex items-center gap-2 mx-auto"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleLetsImprove}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          Let's improve
+          <ChevronRight className="w-5 h-5" />
+        </motion.button>
+      </section>
+
+      {/* Stats Section */}
+      <section className="px-6 py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-black mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            96% of people spend years<br />
+            learning English
+          </motion.h2>
+          <motion.h3 
+            className="text-3xl md:text-4xl font-bold text-black"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            ... but still can't speak fluently
+          </motion.h3>
+        </div>
+      </section>
+
+      {/* Main CTA Section */}
+      <section className="px-6 py-16 text-center">
+        <motion.h2 
+          className="text-3xl md:text-5xl font-bold text-black mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          Try Fluently — the best AI Tutor<br />
+          to progress in English
+        </motion.h2>
+
+        <div className="max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-gray-600 mb-4">
+            While other apps teach the basics...
+          </p>
+          <p className="text-2xl font-semibold text-black">
+            we're here to take you to <span className="font-bold">Advanced level</span> and higher
+          </p>
+        </div>
+
+        <motion.button 
+          className="px-8 py-4 bg-black text-white rounded-lg text-lg font-medium hover:bg-gray-800 transition-colors"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          Try Fluently
+        </motion.button>
+      </section>
+
+      {/* Features Section */}
+      <section className="px-6 py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">
+                Get your real<br />
+                English level
+              </h3>
+              <p className="text-gray-600">
+                We'll assess your real English level and track your progress over time
+              </p>
+            </motion.div>
+
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">
+                Improve with<br />
+                a personal plan
+              </h3>
+              <p className="text-gray-600">
+                Our AI analyzes your level and mistakes to create a personalized improvement program
+              </p>
+            </motion.div>
+
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">
+                Practice with<br />
+                AI tutor
+              </h3>
+              <p className="text-gray-600">
+                Speaking practice on real-life topics: job interviews, meetings, sales, pitch calls—whatever you need
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Feedback Section */}
+      <section className="px-6 py-16">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2 
+            className="text-3xl md:text-5xl font-bold text-black mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Get AI feedback<br />
+            on your real-life calls
+          </motion.h2>
+
+          <motion.p 
+            className="text-xl text-gray-600 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Connect Fluently to your online calls to fix mistakes in your<br />
+            grammar, pronunciation, and vocabulary
+          </motion.p>
+
+          <motion.p 
+            className="text-lg text-gray-500"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            Fluently supports every meeting platform
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="px-6 py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2 
+            className="text-3xl md:text-5xl font-bold text-black mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            ...cheaper than<br />
+            a human tutor.
+          </motion.h2>
+
+          <motion.p 
+            className="text-xl text-gray-600"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            And available 24/7
+          </motion.p>
+
+          <motion.button 
+            className="mt-8 px-8 py-4 bg-black text-white rounded-lg text-lg font-medium hover:bg-gray-800 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Try Fluently
+          </motion.button>
+        </div>
+      </section>
+
+      {/* Users Section */}
+      <section className="px-6 py-16">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2 
+            className="text-3xl md:text-5xl font-bold text-black mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Join our users<br />
+            from 34 countries
+          </motion.h2>
+        </div>
+      </section>
+
+      {/* Test Section */}
+      <section className="px-6 py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2 
+            className="text-3xl md:text-5xl font-bold text-black mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Get your real English level
+          </motion.h2>
+
+          <motion.p 
+            className="text-xl text-gray-600 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Make a quick 4-minute call with our AI tutor<br />
+            and get your English score for FREE
+          </motion.p>
+
+          <motion.button 
+            className="px-8 py-4 bg-black text-white rounded-lg text-lg font-medium hover:bg-gray-800 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Test My English Level
+          </motion.button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="px-6 py-8 bg-black text-white">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="text-sm text-gray-400 mb-4 md:mb-0">
+            © 2025 Fluently Inc.
+          </div>
+          <div className="flex gap-6 text-sm">
+            <a href="#" className="hover:text-gray-300 transition-colors">Support</a>
+            <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-gray-300 transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-gray-300 transition-colors">Fluently iOS app</a>
+          </div>
+        </div>
       </footer>
     </div>
   );
